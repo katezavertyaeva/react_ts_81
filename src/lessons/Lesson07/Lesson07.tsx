@@ -1,3 +1,5 @@
+import { v4 } from "uuid";
+
 import "./styles.css";
 import { animalData } from "./data";
 import AnimalCard from "../../components/AnimalCard/AnimalCard";
@@ -9,7 +11,8 @@ function Lesson07() {
   const animalsCards = animalData.map((animal: AnimalData) => {
     return (
       <AnimalCard
-        key={animal.id}
+        // key={animal.id}
+        key={v4()}
         name={animal.name}
         species={animal.species}
         img={animal.image}
@@ -17,7 +20,6 @@ function Lesson07() {
     );
   });
   console.log(animalsCards);
-  
 
   return <div className="lesson07-wrapper">{animalsCards}</div>;
 }

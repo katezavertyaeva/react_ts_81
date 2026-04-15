@@ -1,17 +1,21 @@
-.my-button {
+import styled from "@emotion/styled";
+
+export const MyButton = styled.button`
   width: 100%;
   /* Потом можно удалить */
   height: 100px;
   padding: 20px;
-  background-color: rgb(116, 29, 80);;
+  background-color: rgb(116, 29, 80);
   color: #fff;
   font-size: 24px;
   font-weight: bold;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-}
 
-.my-button:hover {
-  background-color: #270c20;
-}
+  &:hover {
+    background-color: #270c20;
+  }
+`;
+
+
