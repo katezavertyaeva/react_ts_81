@@ -1,9 +1,9 @@
 import { v4 } from "uuid";
 
-import "./styles.css";
 import { animalData } from "./data";
 import AnimalCard from "../../components/AnimalCard/AnimalCard";
 import type { AnimalData } from "./types";
+import { Lesson07Wrapper } from "./styles";
 
 function Lesson07() {
   // Получаем массив JSX элементов на основе массива данных с помощью
@@ -21,7 +21,7 @@ function Lesson07() {
   });
   console.log(animalsCards);
 
-  return <div className="lesson07-wrapper">{animalsCards}</div>;
+  return <Lesson07Wrapper>{animalsCards}</Lesson07Wrapper>;
 }
 
 export default Lesson07;

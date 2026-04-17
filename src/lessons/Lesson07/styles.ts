@@ -1,4 +1,6 @@
-.lesson07-wrapper {
+import styled from "@emotion/styled";
+
+export const Lesson07Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,4 +8,4 @@
   flex: 1;
   padding: 40px;
   background: rgb(233, 191, 237);
-}
+`;
