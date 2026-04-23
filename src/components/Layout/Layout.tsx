@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 import { useNavigate } from "react-router-dom";
+import { createContext, useState } from "react";
 
 import NavigationLink from "../NavigationLink/NavigationLink";
 import { navLinkData } from "./data";
@@ -15,7 +16,11 @@ import {
 } from "./styles";
 import type { LayoutProps, NavLinkObj } from "./types";
 
+export const LayoutContext = createContext<string | undefined>(undefined);
+
 function Layout({ children }: LayoutProps) {
+  const [name, setName] = useState<string | undefined>("Kate Zavertyaeva");
+
   // useNavigate - это хук из библиотеки react-router-dom. При вызове он
   // возвращает функцию, которую мы сохраняем в переменную и при вызове этой функции
   // мы можем передать путь и произойдет редирект
@@ -35,19 +40,21 @@ function Layout({ children }: LayoutProps) {
   });
 
   return (
-    <LayoutComponent>
-      <Header>
-        <LogoContainer>
+    <LayoutContext.Provider value={name}>
+      <LayoutComponent>
+        <Header>
+          <LogoContainer>
+            <Logo onClick={goToHomePage}>81</Logo>
+            <GoBackButton onClick={goBack}>{"<--"}</GoBackButton>
+          </LogoContainer>
+          <NavContainer>{navLinks}</NavContainer>
+        </Header>
+        <Main>{children}</Main>
+        <Footer>
           <Logo onClick={goToHomePage}>81</Logo>
-          <GoBackButton onClick={goBack}>{"<--"}</GoBackButton>
-        </LogoContainer>
-        <NavContainer>{navLinks}</NavContainer>
-      </Header>
-      <Main>{children}</Main>
-      <Footer>
-        <Logo onClick={goToHomePage}>81</Logo>
-      </Footer>
-    </LayoutComponent>
+        </Footer>
+      </LayoutComponent>
+    </LayoutContext.Provider>
   );
 }
 
